@@ -1,30 +1,64 @@
 # Fitness App
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A fitness tracking dashboard built with Next.js 15, TypeScript, Tailwind CSS, and chart libraries — with a workout dashboard, exercise library, progress charts, and AI-style workout recommendations.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/gileb64375-5584s-projects/v0-fitness-app)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/VsE5i1p2aYg)
+## What it does
 
-## Overview
+- **Dashboard** — stat cards (workouts, calories, streak, active minutes), workout progress charts, and recent workout history.
+- **Exercise library** (`/exercises`) — browsable list of exercises.
+- **AI Recommendations** — smart workout suggestion cards (mock data, no live AI backend).
+- **Theming** — dark/light mode via `next-themes`, responsive sidebar layout.
+- **Charts** — progress visualization with Recharts and chart.js.
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+> Note: all workout/exercise data is mock data in the components — there is no backend, database, or authentication. This is a UI/UX reference implementation generated with v0.
+
+## Tech stack
+
+- **Framework:** Next.js 15 (App Router), React 19, TypeScript
+- **Styling:** Tailwind CSS 3.4, shadcn/ui + Radix UI primitives
+- **Charts:** Recharts 2.15, chart.js, react-chartjs-2
+- **Misc:** lucide-react icons, date-fns, react-day-picker, sonner toasts, embla-carousel, cmdk
+
+## Quick start
+
+Prerequisites: Node.js 18+ and npm (or pnpm/yarn).
+
+```bash
+npm install
+npm run dev
+```
+
+Open http://localhost:3000.
+
+Production build (static export — this app has no API routes or server actions):
+
+```bash
+npm run build   # outputs to ./out
+```
+
+Serve `./out` with any static file server, or deploy to GitHub Pages / any static host.
+
+## Project structure
+
+```
+app/
+  page.tsx                    # fitness dashboard
+  exercises/page.tsx          # exercise library
+  components/                 # DashboardStats, WorkoutProgress, RecentWorkouts, AIRecommendations, Sidebar, Header
+  layout.tsx                  # root layout (theme provider, sidebar)
+components/theme-provider.tsx # next-themes wrapper
+lib/utils.ts                  # classnames helper
+public/                       # placeholder images/assets
+```
+
+## Environment variables
+
+None required.
 
 ## Deployment
 
-Your project is live at:
+Fully static — ships with `output: 'export'` in `next.config.mjs` and deploys to GitHub Pages as a project site. `basePath: '/fitness-app'` is set so assets resolve under the `https://girishlade111.github.io/fitness-app/` subpath. To deploy at a domain root (e.g. Vercel), remove the `basePath` line from `next.config.mjs` before building.
 
-**[https://vercel.com/gileb64375-5584s-projects/v0-fitness-app](https://vercel.com/gileb64375-5584s-projects/v0-fitness-app)**
+---
 
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.app/chat/projects/VsE5i1p2aYg](https://v0.app/chat/projects/VsE5i1p2aYg)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Built by Girish Lade — https://ladestack.in
